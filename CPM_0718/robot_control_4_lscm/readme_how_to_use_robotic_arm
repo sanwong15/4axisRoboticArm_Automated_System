@@ -1,0 +1,17 @@
+
+----
+How to perform robotic arm's manipulation task.
+
+1. enter 'Test_20161122/robot_control_gui_Release' folder and run 'run_4A_tegra'.(I do not need to share it with you, since you have got this folder on your TK1)
+   when opening FourAxisRobotControlGUI, click 'VS Start' button to start sharememory communication module.
+
+2. enter 'robcontrol_new' folder and perform 'sudo python test_RC_zx.py', which will guide robotic arm to move.
+
+
+
+-----
+Calibration Tool
+
+enter 'zhzCalib4Axis/CameraCalibrate_zx' folder and find 'zhz_find_CB_new.py', which is a script for generating mapping matrix between real robotic coordinates and image space coordinates.
+
+

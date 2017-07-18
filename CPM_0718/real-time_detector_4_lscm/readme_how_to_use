@@ -1,0 +1,9 @@
+
+This caffe can be performed on TX1.
+
+1. enter caffe folder and run 'start_detector.sh' to perform real-time detect capacitors. Before performing it successfully, you need to modify some path variables by yourself according to the provided example code.
+
+2. 'comm_agent' has not been implemented, just ignore it.
+
+
+

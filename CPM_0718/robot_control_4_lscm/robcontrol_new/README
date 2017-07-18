@@ -1,0 +1,3 @@
+Before you run the 4_TEST.py, you need to check the com_interface.py, 
+line 16: JOINTS = 4 
+When test six axis, modify the line 16: JOINTS = 6
