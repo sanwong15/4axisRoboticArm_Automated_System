@@ -1,0 +1,32 @@
+INFO:
+# Hong San Wong (LSCM)
+# 07202017
+# Robot Safety with DVS input
+
+
+
+# ============= too_DVS.py ==================
+
+too_DVS.py performs the following task
+
+im_show: Draw images within a Named_Window
+draw_shadow_text: Put text on image
+draw_mask: Draw a MASK over the image
+
+
+Data Transform:
+tensor_to_img: Take an img (numpy) as an input and return a np.unit8 image
+img_to_tensor: Take an numpy array as input and convert it to an image (float)
+randomVerticalFlip: Do vertical flip with opencv lib. Base on a radom value: u
+Same applies on HorizontalFlip, Flip. Transpose, 90DegreeRotation, Shift, RandomRotate, Shift_Scale, ScaleRotate, CropCenter, Distortion (Two types of these), randomBrightness, randomFilter, randomContrast, randomSaturation
+
+
+
+
+# ============== kgDVS ======================
+kgDVS.py maintain the data path
+(1) Define Class names and Class size
+(2) Define Data path (training, testing)
+
+Functions:
+score_to_class_names

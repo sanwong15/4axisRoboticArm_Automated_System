@@ -1,3 +1,9 @@
+# Hong San Wong (LSCM)
+# 07202017
+# Robot Safety with DVS input
+# common.py state the common Library that most codes need.
+
+
 SEED=123
 
 import os
@@ -12,7 +18,7 @@ import PIL
 import cv2
 
 random.seed(SEED)
-np.random.seed(SEED)
+np.random.seed(SEED) #np.random.seed is called when RandomState is initialized
 
 import matplotlib
 matplotlib.use('TkAgg')
