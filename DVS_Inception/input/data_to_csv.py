@@ -76,19 +76,15 @@ for the_file in os.listdir(trainImg_Path):
         print(e)
 
 
-renamed_train = "Train_"
-renamed_test = "Test_"
+renamed_train_header = "Train_"
+renamed_test_header = "Test_"
 
 
 
 
 
 # Create CSV file to store results: They will locate at the same directory where this code locate
-
-#i=0 # Counter for test.csv
-#j=0 # Counter for train.csv
-
-# Create CSV file that maintain the original name of images
+# CSV file (original name of images)
 with open("train.csv", "w")as f:
             writer = csv.writer(f)
             writer.writerow(["Number", "Filename", "label"])
@@ -96,7 +92,7 @@ with open("test.csv", "w")as f:
     writer = csv.writer(f)
     writer.writerow(["Number", "Filename", "label"])
 
-# Create CSV file that keep the updated image file names
+# CSV file (Renamed)
 with open("train_renamed.csv", "w")as f:
             writer = csv.writer(f)
             writer.writerow(["Number", "Filename", "label"])
@@ -107,33 +103,34 @@ with open("test_renamed.csv", "w")as f:
 i=1 # Counter for all the training csv
 j=1 # Counter for all the testing csv
 
+# Set Counter:
+counter = 0
 
 # Handle the "HAND" folder
 for filename in os.listdir(handImg_Path):
-    print(filename)
-    counter = 0
+    print('Current_File: ' + filename)
+    print('Counter: ' + counter)
 
     if filename.endswith(".jpg"):
         curr_path = os.path.join(handImg_Path, filename)
         print(curr_path)
         curr_img = cv2.imread(curr_path)
 
+        # I do think we should use While Loop that would make more sense
         if counter <= train_test_ratio * totalnumberhand:
             with open("train.csv", "a")as f:
                 writer = csv.writer(f)
                 writer.writerow([i, filename, labelhand])
 
             # Rename it
-            renamed_train = renamed_train+str(i)
+            renamed_train = renamed_train_header + str(i) + '.jpg'
 
             with open("train_renamed.csv", "a") as f:
                 writer = csv.writer(f)
                 writer.writerow([i,renamed_train,labelhand])
 
             # Save another set of images with new name
-            #path = str(trainImg_Path)
-            #name = str(renamed_train + '.jpg')
-            name_Path = trainImg_Path + '/' + renamed_train + '.jpg'
+            name_Path = trainImg_Path + '/' + renamed_train
             cv2.imwrite(str(name_Path),curr_img)
             
             #Update all counters
@@ -147,15 +144,20 @@ for filename in os.listdir(handImg_Path):
                 writer = csv.writer(f)
                 writer.writerow([j, filename, labelhand])
 
-            renamed_test = renamed_test + str(j)
+            renamed_test = renamed_test_header + str(j) + '.jpg'
 
             with open("test_renamed.csv", "a") as f:
                 writer = csv.writer(f)
                 writer.writerow([j,renamed_test,labelhand])
 
             # Save another set of images with new name
-            name_Path = testImg_Path + '/' + renamed_test + '.jpg'
-            cv2.imwrite(name_Path,curr_img)
+            
+
+            name_Path = os.path.join(testImg_Path,renamed_test)
+            
+
+            name_Path = testImg_Path + '/' + renamed_test
+            cv2.imwrite(str(name_Path),curr_img)
 
             j+=1
             counter+=1
@@ -163,14 +165,15 @@ for filename in os.listdir(handImg_Path):
     else:
         continue
 
-# Reset counter
-#i=0
-#j=0
+
 
 # Handle the "NO_HAND" folder
+# Reset Counter
+counter = 0
+
 for filename in os.listdir(nohandImg_Path):
-    print(filename)
-    counter = 0
+    print('Current_File: ' + filename)
+    print('Counter: ' + counter)
 
     if filename.endswith(".jpg"):
         curr_path = os.path.join(nohandImg_Path, filename)
@@ -183,14 +186,14 @@ for filename in os.listdir(nohandImg_Path):
                 writer.writerow([i, filename, labelnohand])
 
             # Rename it
-            renamed_train = renamed_train+str(i)
+            renamed_train = renamed_train_header + str(i) + '.jpg'
 
             with open("train_renamed.csv", "a") as f:
                 writer = csv.writer(f)
                 writer.writerow([i,renamed_train,labelnohand])
 
             # Save another set of images with new name
-            name_Path = trainImg_Path + '/' + renamed_train + '.jpg'
+            name_Path = trainImg_Path + '/' + renamed_train
             cv2.imwrite(name_Path,curr_img)
             
             #Update all counters
@@ -204,15 +207,15 @@ for filename in os.listdir(nohandImg_Path):
                 writer = csv.writer(f)
                 writer.writerow([j, filename, labelnohand])
 
-            renamed_test = renamed_test + str(j)
+            renamed_test = renamed_test_header + str(j) + '.jpg'
 
             with open("test_renamed.csv", "a") as f:
                 writer = csv.writer(f)
                 writer.writerow([j,renamed_test,labelnohand])
 
             # Save another set of images with new name
-            name_Path = testImg_Path + '/' + renamed_test + '.jpg'
-            cv2.imwrite(name_Path,curr_img)
+            name_Path = testImg_Path + '/' + renamed_test
+            cv2.imwrite(str(name_Path),curr_img)
 
             j+=1
         continue
@@ -220,9 +223,12 @@ for filename in os.listdir(nohandImg_Path):
         continue
 
 # Handle the "Idle" folder
+# Reset Counter
+counter = 0
+
 for filename in os.listdir(idleImg_Path):
-    print(filename)
-    counter = 0
+    print('Current_File: ' + filename)
+    print('Counter: ' + counter)
 
     if filename.endswith(".jpg"):
         curr_path = os.path.join(idleImg_Path, filename)
