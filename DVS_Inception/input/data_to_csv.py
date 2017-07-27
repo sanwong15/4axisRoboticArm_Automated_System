@@ -10,6 +10,8 @@ a look up table during training and testing
 
 Update: San Wong 
 Changes: (1) Automate File count in Hand/No_Hand/Idel folder
+         (2) Create Train_renamed and Test_renamed csv file to store renamed Train images and Test imagss label mapping
+         (3) Rename images and group them into Train image and Test image, Store spearately into Train folder and Test Folder
 
 '''
 import csv
@@ -108,8 +110,8 @@ counter = 0
 
 # Handle the "HAND" folder
 for filename in os.listdir(handImg_Path):
-    print('Current_File: ' + filename)
-    print('Counter: ' + counter)
+    print ' Current_File: {}'.format(filename)
+    print 'Counter: {}'.format(counter)
 
     if filename.endswith(".jpg"):
         curr_path = os.path.join(handImg_Path, filename)
@@ -172,8 +174,8 @@ for filename in os.listdir(handImg_Path):
 counter = 0
 
 for filename in os.listdir(nohandImg_Path):
-    print('Current_File: ' + filename)
-    print('Counter: ' + counter)
+    print ' Current_File: {}'.format(filename)
+    print 'Counter: {}'.format(counter)
 
     if filename.endswith(".jpg"):
         curr_path = os.path.join(nohandImg_Path, filename)
@@ -227,8 +229,8 @@ for filename in os.listdir(nohandImg_Path):
 counter = 0
 
 for filename in os.listdir(idleImg_Path):
-    print('Current_File: ' + filename)
-    print('Counter: ' + counter)
+    print ' Current_File: {}'.format(filename)
+    print 'Counter: {}'.format(counter)
 
     if filename.endswith(".jpg"):
         curr_path = os.path.join(idleImg_Path, filename)
@@ -238,18 +240,18 @@ for filename in os.listdir(idleImg_Path):
         if counter <= train_test_ratio * totalnumberidle:
             with open("train.csv", "a")as f:
                 writer = csv.writer(f)
-                writer.writerow([i, filename, labelhand])
+                writer.writerow([i, filename, labelidle])
 
             # Rename it
-            renamed_train = renamed_train+str(i)
+            renamed_train = renamed_train_header + str(i) + '.jpg'
 
             with open("train_renamed.csv", "a") as f:
                 writer = csv.writer(f)
-                writer.writerow([i,renamed_train,labelhand])
+                writer.writerow([i,renamed_train,labelidle])
 
             # Save another set of images with new name
-            name_Path = trainImg_Path + '/' + renamed_train + '.jpg'
-            cv2.imwrite(name_Path,curr_img)
+            name_Path = trainImg_Path + '/' + renamed_train
+            cv2.imwrite(str(name_Path),curr_img)
             
             #Update all counters
             i+=1
@@ -260,17 +262,17 @@ for filename in os.listdir(idleImg_Path):
         if counter > train_test_ratio * totalnumberidle:#70% of images
             with open("test.csv", "a")as f:
                 writer = csv.writer(f)
-                writer.writerow([j, filename, labelhand])
+                writer.writerow([j, filename, labelidle])
 
-            renamed_test = renamed_test + str(j)
+            renamed_test = renamed_test_header + str(j) + '.jpg'
 
             with open("test_renamed.csv", "a") as f:
                 writer = csv.writer(f)
-                writer.writerow([j,renamed_train,labelhand])
+                writer.writerow([j,renamed_test,labelidle])
 
             # Save another set of images with new name
-            name_Path = testImg_Path + '/' + renamed_test + '.jpg'
-            cv2.imwrite(name_Path,curr_img)
+            name_Path = testImg_Path + '/' + renamed_test
+            cv2.imwrite(str(name_Path),curr_img)
 
             j+=1
         continue
