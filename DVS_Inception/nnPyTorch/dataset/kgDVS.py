@@ -10,9 +10,9 @@ from torch.utils.data.sampler import *
 
 TOP_DIR ='../../input/dvs_every5frame_0714'
 TRAIN_JPG_DIR = TOP_DIR+'train-jpg/'
-TRAIN_TIF_DIR = TOP_DIR+'train-tif-v2/'
+#TRAIN_TIF_DIR = TOP_DIR+'train-tif-v2/'
 TEST_JPG_DIR = TOP_DIR+'test-jpg-additional/'
-TEST_TIF_DIR = TOP_DIR+'test-tif-v2/'
+#TEST_TIF_DIR = TOP_DIR+'test-tif-v2/'
 LABEL_CSV = TOP_DIR+'train_v2.csv'
 
 

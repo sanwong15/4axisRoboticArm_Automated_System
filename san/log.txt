@@ -1,0 +1,16 @@
+nohup: ignoring input
+[I 14:49:57.851 NotebookApp] The port 8888 is already in use, trying another port.
+[I 14:49:57.851 NotebookApp] The port 8889 is already in use, trying another port.
+[I 14:49:57.852 NotebookApp] The port 8890 is already in use, trying another port.
+[I 14:49:57.852 NotebookApp] The port 8891 is already in use, trying another port.
+[I 14:49:57.856 NotebookApp] Serving notebooks from local directory: /home/user/san
+[I 14:49:57.856 NotebookApp] 0 active kernels 
+[I 14:49:57.857 NotebookApp] The Jupyter Notebook is running at: http://localhost:8892/?token=8a8e788ad20f92a52f25df33c1d897262753766776c3e85e
+[I 14:49:57.857 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 14:49:57.857 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8892/?token=8a8e788ad20f92a52f25df33c1d897262753766776c3e85e
+[C 12:23:39.027 NotebookApp] received signal 15, stopping
+[I 12:23:39.028 NotebookApp] Shutting down kernels

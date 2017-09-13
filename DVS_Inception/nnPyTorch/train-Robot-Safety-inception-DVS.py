@@ -1,4 +1,10 @@
+# Hong San Wong (LSCM)
+# 07202017
+# Robot Safety with DVS input
+# Model: inceptionv3
 
+
+# Import Data
 from dataset.kgforest import *
 from dataset.tool import *
 
@@ -7,10 +13,12 @@ from net.util import *
 
 from net.model.inceptionv3 import inception_v3 as Net
 
-SIZE = 256
+X_DIM = 826
+Y_DIM = 551
+
 SRC = 'tif'
 CH = 'NIR'
-NCH = 1  # 4
+NCH = 1  # 4 NCH Stands for Number of Channel
 SEED = 123
 
 use_gpu = True
